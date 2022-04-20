@@ -1,0 +1,9 @@
+class Solution(object):
+    def sortSentence(self, s):
+        listOfWords = s.split(" ")
+        sortedList = []
+        for i in range(len(listOfWords)):
+            sortedList.append(i)
+        for item in listOfWords:
+            sortedList[int(item[-1])-1] = item[:len(item)-1]
+        return (" ").join(sortedList)
