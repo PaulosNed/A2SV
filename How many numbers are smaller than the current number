@@ -1,0 +1,10 @@
+class Solution(object):
+    def smallerNumbersThanCurrent(self, nums):
+        repitionList = []
+        for num in nums:
+            count = 0
+            for i in range(len(nums)):
+                if num>nums[i]:
+                    count+=1
+            repitionList.append(count)
+        return repitionList
