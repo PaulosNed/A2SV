@@ -1,0 +1,28 @@
+class Solution(object):
+
+    def __init__(self):    
+        self.nextGreaterList = []
+
+    def nextGreaterElement(self, nums1, nums2):
+        for i in range (len(nums2)):
+            if nums1[0] == nums2[i]:
+                while i+1 < len(nums2):
+                    if nums2[i+1] > nums1[0]:
+                        self.nextGreaterList.append(nums2[i+1])
+                        i = 0
+                        nums1.pop(0)
+                        if len(nums1) !=0:
+                            return self.nextGreaterElement(nums1, nums2)
+                        else:
+                            return self.nextGreaterList
+                    else:
+                        i = i+1
+                if ((i+1) >= len(nums2)):
+                    self.nextGreaterList.append(-1)
+                    i = 0
+                    nums1.pop(0)
+                    if len(nums1) !=0:
+                        return self.nextGreaterElement(nums1, nums2)
+                    else:
+                        return self.nextGreaterList
+        
