@@ -1,0 +1,14 @@
+class Solution(object):
+    def validateStackSequences(self, pushed, popped):
+        validator = []
+        for i in range(0,len(pushed)):
+            validator.append(pushed[0])
+            pushed.pop(0)
+            while(len(validator)!=0 and validator[-1] == popped[0]):
+                validator.pop()
+                popped.pop(0)
+
+        if len(validator) == 0:
+           return True
+        else:
+            return False
