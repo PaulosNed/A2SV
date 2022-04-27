@@ -1,0 +1,13 @@
+class Solution(object):
+    def sortColors(self, nums):
+        sortedNums = []
+        for num in nums:
+            if num == 0:
+                sortedNums.append(num)
+        for num in nums:
+            if num == 1:
+                sortedNums.append(num)
+        for num in nums:
+            if num == 2:
+                sortedNums.append(num)
+        return sortedNums
