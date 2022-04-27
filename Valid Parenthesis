@@ -1,0 +1,17 @@
+class Solution(object):
+    def isValid(self, s):
+        dictionary = {"(":")" , "{":"}" , "[":"]"}
+        sample = list(s)
+        validator = []
+        for item in sample:
+            if item in dictionary.keys():
+                validator.append(item)
+            elif item in dictionary.values():
+                if len(validator)!=0 and dictionary[validator[-1]] == item:
+                    validator.pop()
+                else:
+                    return False
+        if validator:
+            return False
+        return True
+        
