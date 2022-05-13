@@ -1,0 +1,19 @@
+class Solution(object):
+    def maxOperations(self, nums, k):
+        count = 0
+        nums.sort()
+        temp = nums
+        
+        while(len(nums)>1):
+            if nums[0]+nums[-1] < k:
+                nums.pop(0)
+                continue
+            if nums[0]+nums[-1] > k:
+                nums.pop()
+                continue
+            if nums[0]+nums[-1] == k:
+                nums.pop(0)
+                nums.pop()
+                count += 1
+                continue
+        return count
