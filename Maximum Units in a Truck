@@ -1,0 +1,17 @@
+from operator import itemgetter
+
+class Solution(object):
+    def maximumUnits(self, boxTypes, truckSize):
+        addedBox = 0
+        result = 0
+        bestBoxes = sorted(boxTypes, key=itemgetter(1), reverse = True)
+        while(addedBox < truckSize):
+            if len(bestBoxes) == 0:
+                return result
+            if bestBoxes[0][0] == 0:
+                bestBoxes.pop(0)
+                continue
+            bestBoxes[0][0]-=1
+            addedBox +=1
+            result += bestBoxes[0][1]
+        return result
