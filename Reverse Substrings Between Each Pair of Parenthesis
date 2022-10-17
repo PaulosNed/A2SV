@@ -1,0 +1,28 @@
+class Solution(object):
+    def reverseParentheses(self, s):
+        tracker = []
+        final = list(s)
+        finalS = []
+        for i in range(len(final)):
+            # print(tracker)
+            # print(final)
+            if (final[i] == "("):
+                tracker.append(i)
+            elif (final[i] == ")"):
+                initial = tracker.pop()
+                # print(initial)
+                # print(i)
+                rem = final[i:]
+                # print(rem)
+                temp = final[initial+1 : i]
+                # print(temp)
+                temp.reverse()
+                final = final[:initial+1]
+                final.extend(temp)
+                final.extend(rem)
+        print(final)
+        for item in final:
+            if item=="(" or item==")":
+                continue
+            finalS.append(item)
+        return "".join(finalS)
