@@ -1,0 +1,22 @@
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        s = list(s)
+        longest = 0
+        slow, fast = 0, 0
+        tracker = []
+        while(slow < len(s)):
+            if s[fast] not in tracker:
+                tracker.append(s[fast])
+                if fast + 1 >= len(s):
+                    longest = max(longest, len(tracker))
+                    return longest
+                fast += 1
+            else:
+                longest = max(longest, len(tracker))
+                tracker = []
+                slow += 1
+                fast = slow
+        longest = max(longest, len(tracker))   
+        return longest
+        
+    
