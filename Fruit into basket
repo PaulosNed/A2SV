@@ -1,0 +1,25 @@
+class Solution(object):
+    def totalFruit(self, fruits):
+        if len(fruits) <= 2:
+            return len(fruits)
+        largest = 0
+        first = 0
+        second = first + 1
+        bucket = [fruits[first], fruits[second]]
+        while(second < len(fruits)):
+            if (second + 1 < len(fruits)):
+                if bucket[0] == bucket[1]:
+                    second += 1
+                    bucket[1] = fruits[second]
+                    continue
+                if fruits[second+1] in bucket:
+                    second += 1
+                    continue
+                largest = max(largest, second-first+1)
+                first += 1
+                second = first + 1
+                bucket = [fruits[first], fruits[second]]
+            else:
+                largest = max(largest, second-first+1)
+                break
+        return largest        
