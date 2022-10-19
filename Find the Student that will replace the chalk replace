@@ -1,0 +1,17 @@
+class Solution(object):
+    def chalkReplacer(self, chalk, k):
+        prefixSum = 0
+        for c in chalk:
+            prefixSum+=c
+        times = k//prefixSum
+        prefixSum*=times
+        i=0
+        while(i<len(chalk)):
+            prefixSum+=chalk[i]
+            if (k-prefixSum<0):
+                return i
+            elif (k-prefixSum==0):
+                return i+1
+            else:
+                i+=1
+        return i
