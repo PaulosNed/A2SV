@@ -1,0 +1,27 @@
+class Solution(object):
+    def longestOnes(self, nums, k):
+        if len(nums) <= k:
+            return len(nums)
+        largest = 0
+        first = 0
+        second = 0
+        while (second < len(nums)):
+            if nums[second]==1:
+                if k < 0:
+                    if nums[first] == 0:
+                        k+=1
+                    first += 1
+                second += 1
+            elif nums[second]==0 and k > 0:
+                k-=1
+                second+=1
+            else:
+                largest = max(largest, second - first)
+                if nums[first] == 0:
+                    k+=1
+                k-=1
+                first += 1
+                second += 1
+        largest = max(largest, second-first)
+        return largest
+    
