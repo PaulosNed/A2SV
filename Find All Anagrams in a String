@@ -1,0 +1,15 @@
+class Solution(object):
+    def findAnagrams(self, s, p):
+        start = 0
+        end = start + len(p) - 1
+        s = list(s)
+        final = []
+        while(end < len(s)):
+            anagList = s[start: end + 1]
+            anagList.sort()
+            anag = "".join(anagList)
+            if (anag == p):
+                final.append(start)
+            start += 1
+            end += 1
+        return final
