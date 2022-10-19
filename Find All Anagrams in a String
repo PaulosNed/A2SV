@@ -1,5 +1,8 @@
 class Solution(object):
     def findAnagrams(self, s, p):
+        p = list(p)
+        p.sort()
+        p = "".join(p)
         start = 0
         end = start + len(p) - 1
         s = list(s)
