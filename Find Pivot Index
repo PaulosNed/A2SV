@@ -1,0 +1,14 @@
+class Solution(object):
+    def pivotIndex(self, nums):
+        start = 0
+        sumI = 0
+        sumF = sum(nums[start+1:])
+        while(start < len(nums)):
+            if(sumI == sumF):
+                return start
+            sumI+=nums[start]
+            start += 1
+            if(start < len(nums)):
+                sumF-=nums[start]
+        return -1
+            
