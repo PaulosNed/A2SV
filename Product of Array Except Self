@@ -1,0 +1,14 @@
+import numpy
+class Solution(object):
+    def productExceptSelf(self, nums):
+        prefix = 1
+        postfix = 1
+        final = []
+        for i in range(len(nums)):
+            final.append(prefix)
+            prefix *= nums[i]
+        for i in range(len(nums)-1, -1, -1):
+            final[i]*=postfix
+            postfix *= nums[i]
+        return final
+            
