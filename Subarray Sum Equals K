@@ -1,0 +1,15 @@
+class Solution(object):
+    def subarraySum(self, nums, k):
+        prefixSum = 0
+        count = 0
+        tracker = {0:1}
+        for num in nums:
+            prefixSum += num
+            if prefixSum-k in tracker:
+                count+=tracker[prefixSum-k]
+            if prefixSum not in tracker:
+                tracker[prefixSum] = 1
+            else:
+                tracker[prefixSum] += 1
+                
+        return count
