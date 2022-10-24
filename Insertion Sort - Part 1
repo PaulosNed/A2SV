@@ -1,0 +1,41 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'insertionSort1' function below.
+#
+# The function accepts following parameters:
+#  1. INTEGER n
+#  2. INTEGER_ARRAY arr
+#
+
+def insertionSort1(n, arr):
+    if (arr[-1] >= arr[-2]):
+        print(*arr, sep=" ")
+    element = arr.pop()
+    arr.append(arr[-1])
+    print(*arr, sep=" ")
+    i = n -  3
+    while(i>=0):
+        if arr[i] <= element:
+            arr[i+1] = element
+            print(*arr, sep=" ")
+            break
+        else:
+            arr[i+1] = arr[i]
+            print(*arr, sep=" ")
+            i-=1
+    if arr[0] > element:
+        arr[0] = element
+        print(*arr, sep=" ")
+if __name__ == '__main__':
+    n = int(input().strip())
+
+    arr = list(map(int, input().rstrip().split()))
+
+    insertionSort1(n, arr)
