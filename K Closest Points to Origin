@@ -1,0 +1,27 @@
+class Solution:
+    def kClosest(self, points: List[List[int]], k: int) -> List[List[int]]:
+        allPoints = {}
+        distance = set()
+        duplicate = []
+        
+        for point in points:
+            dis = math.sqrt((point[0]**2)+(point[1]**2))
+            distance.add(dis)
+            if (point[0], point[1]) in allPoints.keys():
+                duplicate.append((point[0], point[1]))
+            allPoints[(point[0], point[1])] = dis
+        distance = list(distance)
+        distance.sort()
+        
+        
+        sortedValues = {k: v for k, v in sorted(allPoints.items(), key=lambda item: item[1])}
+        sortedPoints = list(sortedValues.keys())
+        if len(duplicate) != 0:
+            i = 0
+            while(i < len(sortedPoints)):
+                if sortedPoints[i] in duplicate:
+                    sortedPoints.insert(i, sortedPoints[i])
+                    duplicate.remove(sortedPoints[i])
+                else:
+                    i+=1
+        return sortedPoints[:k]
