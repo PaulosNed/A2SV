@@ -1,0 +1,10 @@
+def theaterSquare(n,m,a):
+    total = 0
+    while(n>0):
+        total+=1
+        n-=a
+    m-=a
+    while(m>0):
+        total*=2
+        m-=a
+    print(total)
