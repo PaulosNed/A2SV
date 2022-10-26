@@ -1,0 +1,18 @@
+class Solution:
+    def minSetSize(self, arr: List[int]) -> int:
+        count = {}
+        size = 0
+        noOfItems = 0
+        for i in arr:
+            if i in count.keys():
+                count[i]+=1
+            else:
+                count[i] = 1
+        sortedDict = dict(sorted(count.items(), key=lambda item: item[1]))
+        sortedKeys = list(sortedDict.keys())
+        sortedKeys.reverse()
+        while(size < len(arr)/2):
+            size += count[sortedKeys[0]]
+            noOfItems += 1
+            sortedKeys.pop(0)
+        return noOfItems
