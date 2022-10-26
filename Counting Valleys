@@ -1,0 +1,51 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'countingValleys' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER steps
+#  2. STRING path
+#
+
+class Solution(object):
+    def __init__(self):
+        self.valley = 0
+    def countingValleys(self, steps, path):
+        upStack = []
+        downStack = []
+        count = 0
+        for i in path:
+            if i == "U" and downStack:
+                downStack.pop()
+            elif i == "D" and upStack:
+                upStack.pop()
+            elif i == "U":
+                upStack.append(i)
+            else:
+                if not downStack:
+                    count+=1
+                downStack.append(i)
+        return count
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    steps = int(input().strip())
+
+    path = input()
+    
+    a = Solution()
+    result = a.countingValleys(steps, path)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
