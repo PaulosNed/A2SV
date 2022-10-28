@@ -1,0 +1,19 @@
+
+class Solution(object):
+    def findOriginalArray(self, changed):
+        if len(changed)%2 != 0:
+            return []
+        changed.sort()
+        original = []
+        allNums = Counter(changed)
+        for item in changed:
+            if allNums[item] == 0:
+                continue
+            else:
+                if allNums.get(2*item,0) >= 1:
+                    original.append(item)
+                    allNums[item]-=1
+                    allNums[2*item]-=1
+                else:
+                    return []
+        return original
