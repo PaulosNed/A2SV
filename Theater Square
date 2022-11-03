@@ -1,10 +1,9 @@
-def theaterSquare(n,m,a):
-    total = 0
-    while(n>0):
-        total+=1
-        n-=a
-    m-=a
-    while(m>0):
-        total*=2
-        m-=a
-    print(total)
+def theatreSquare():
+	inps=input().split()
+	n=int(inps[0])
+	m=int(inps[1])
+	a=int(inps[2])
+	w=n/a if n%a==0 else n//a+1
+	h=m/a if m%a==0 else m//a+1
+	return int(w*h)
+print(theatreSquare())
