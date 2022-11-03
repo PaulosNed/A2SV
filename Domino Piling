@@ -1,3 +1,8 @@
-class Solution(object):
-    def numOfDominoes(self,m,n):
-        return (m*n)//2
+def numOfDominoes():
+    inp = input()
+    inp = inp.split()
+    p = 1
+    for item in inp:
+        p *= int(item)
+    return p//2
+print(numOfDominoes())
