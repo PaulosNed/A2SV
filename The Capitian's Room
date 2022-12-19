@@ -1,0 +1,8 @@
+from collections import Counter
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+numberOfFamilies = int(input())
+recievedRooms = input()
+recievedRooms = recievedRooms.split(" ")
+rooms = Counter(recievedRooms)
+captainsRoom = min(rooms, key=rooms.get)
+print(captainsRoom)
