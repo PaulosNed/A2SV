@@ -1,0 +1,11 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+length = int(input())
+allWords = {}
+for i in range(length):
+    word = input()
+    allWords[word] = allWords.get(word, 0) + 1
+print(len(allWords))
+allLength = ""
+for item in allWords:
+    allLength += str(allWords[item]) + " "
+print(allLength) 
