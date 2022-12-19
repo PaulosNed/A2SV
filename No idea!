@@ -1,0 +1,15 @@
+from collections import Counter
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+happiness = 0
+nAndM = input().split(" ")
+n = int(nAndM[0])
+m = int(nAndM[1])
+arr = Counter(input().split(" "))
+a = Counter(input().split(" "))
+b = Counter(input().split(" "))
+for item in arr:
+    if item in a:
+        happiness += arr[item]
+    elif item in b:
+        happiness -= arr[item]
+print(happiness)
