@@ -1,0 +1,29 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+testCases = int(input())
+for i in range(testCases):
+    noOfCubes = int(input())
+    blocks = input().split(" ")
+    if len(blocks) <= 2:
+        print("Yes")
+        continue
+    start = 0
+    end = noOfCubes - 1
+    if (int(blocks[start]) > int(blocks[end])):
+        base = int(blocks[start])
+        start += 1
+    else:
+        base = int(blocks[end])
+        end -= 1
+    while(start < end):
+        next = max(int(blocks[start]), int(blocks[end]))
+        if next <= base:
+            if next == int(blocks[start]):
+                start += 1
+            else:
+                end-=1
+        else:
+            print("No")
+            break
+    if start >= end:
+        print("Yes")
+                    
