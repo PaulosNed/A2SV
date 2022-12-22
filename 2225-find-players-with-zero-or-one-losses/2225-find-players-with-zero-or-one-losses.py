@@ -8,7 +8,6 @@ class Solution:
             winners.append(match[0])
             lossers.append(match[1])
         allTeams = set(winners+lossers)
-        winners = Counter(winners)
         lossers = Counter(lossers)
         for team in allTeams:
             if team not in lossers:
