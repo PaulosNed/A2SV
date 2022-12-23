@@ -1,0 +1,20 @@
+if __name__ == '__main__':
+    N = int(input())
+    final = []
+    operations = {
+        "insert": lambda idx, value: final.insert(idx, value),
+        "print": lambda :print(final),
+        "remove": lambda value:final.remove(value),
+        "append": lambda value:final.append(value),
+        "sort": lambda :final.sort(),
+        "pop": lambda :final.pop(),
+        "reverse": lambda :final.reverse()
+    }
+    for i in range(N):
+        query = input().split(" ")
+        if len(query) == 3:
+            operations[query[0]](int(query[1]), int(query[2]))
+        elif len(query) == 2:
+            operations[query[0]](int(query[1]))
+        else:
+            operations[query[0]]()
