@@ -1,0 +1,14 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+def strictSuperset():        
+    superset = set(input().split(" "))
+    n = int(input())
+    for i in range(n):
+        subset = set(input().split(" "))
+        if len(superset) <= len(subset):
+            return False
+        for element in subset:
+            if element not in superset:
+                return False
+    return True
+
+print(strictSuperset())
