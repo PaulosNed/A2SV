@@ -1,0 +1,21 @@
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+from collections import defaultdict
+
+lengths = input().split(" ")
+groupA = []
+groupB = []
+for i in range(int(lengths[0])):
+    groupA.append(input())
+for i in range(int(lengths[1])):
+    groupB.append(input())
+
+values = defaultdict(list)
+ans = ""
+for idx, value in enumerate(groupA):
+    values[value].append(idx+1)
+for idx, value in enumerate(groupB):
+    if value in values:
+        print(*values[value], sep=" ")
+    else:
+        print("-1")
+        
