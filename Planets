@@ -1,0 +1,18 @@
+from collections import Counter
+
+def checker():
+    firstLine = input().split(" ")
+    m = int(firstLine[0])
+    c = int(firstLine[1])
+    orbits = Counter(input().split(" "))
+    ans = 0
+    for orbit in orbits:
+        if orbits[orbit] >= c:
+            ans += c
+        else:
+            ans += orbits[orbit]
+    return ans
+n = int(input())
+for i in range(n):
+    print(checker())
+    
