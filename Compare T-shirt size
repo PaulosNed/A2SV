@@ -1,0 +1,24 @@
+def checker():
+    currInput = input().split(" ")
+    first = currInput[0]
+    second = currInput[1]
+    comparer = {"S":0, "M":1, "L":2}
+    i = len(first) - 1
+    j = len(second) - 1
+    if comparer[first[i]] > comparer[second[j]]:
+        return ">"
+    elif comparer[first[i]] < comparer[second[j]]:
+        return "<"
+    else:
+        # print(i, j)
+        if (i > j and first[i] == "S") or (i < j and first[i] == "L"):
+            return "<"
+        elif (i < j and first[i] == "S") or (i > j and first[i] == "L"):
+            return ">"
+        else:
+            return "="
+
+n = int(input())
+for i in range(n):
+    print(checker())
+    
