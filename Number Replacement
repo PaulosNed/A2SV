@@ -1,0 +1,17 @@
+def checker():
+        m = int(input())
+        nums = input().split(" ")
+        string = input()
+        tracker = {}
+        for j in range(m):
+            if nums[j] in tracker:
+                if tracker[nums[j]] != string[j]:
+                    return "NO"
+            else:
+                tracker[nums[j]] = string[j]
+        return "YES"
+
+n = int(input())
+for i in range(n):
+    print(checker())
+    
