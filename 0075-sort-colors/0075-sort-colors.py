@@ -1,11 +1,15 @@
 class Solution(object):
     def sortColors(self, nums):
-        i = 0
+        if len(nums) < 2:
+            return nums
+        i = 1
         while(i<len(nums)):
-            minIdx = i
-            for j in range(i, len(nums)):
-                if nums[j] < nums[minIdx]:
-                    minIdx = j
-            nums[i], nums[minIdx] = nums[minIdx], nums[i]
-            i += 1
+            if nums[i] < nums[i-1]:
+                j = i
+                while(nums[j] < nums[j-1]):
+                    nums[j], nums[j-1] = nums[j-1], nums[j]
+                    j-=1
+                    if (j <= 0):
+                        break
+            i+=1
         return nums
