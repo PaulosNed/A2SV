@@ -1,0 +1,29 @@
+from collections import defaultdict
+n, m = map(int, input().split())
+grid = []
+valid = []
+for i in range(n):
+    tracker = {}
+    row = list(input())
+    grid.append(row)
+    for j,v in enumerate(row):
+        if v in tracker:
+            tracker[v] = -1
+        else:
+            tracker[v] = j
+    for k in tracker:
+        if tracker[k] != -1:
+            valid.append((i,tracker[k]))
+for c in range(m):
+    tracker = defaultdict(list)
+    for r in range(n):
+        tracker[grid[r][c]].append(r)
+    for key in tracker:
+        if len(tracker[key]) > 1:
+            for invalid in tracker[key]:
+                if (invalid, c) in valid:
+                    valid.remove((invalid, c))
+ans = ""
+for item in valid:
+    ans += grid[item[0]][item[1]]
+print(ans)
