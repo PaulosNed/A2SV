@@ -1,0 +1,20 @@
+def handleEverything():
+        n = int(input())
+        arr = list(map(int, input().split(" ")))
+        if len(arr) <= 1:
+            return "YES"
+        arr.sort()
+        start = 1
+        while start < len(arr):
+            if abs(arr[start] - arr[start-1]) <= 1:
+                arr.pop(start-1)
+            else:
+                start += 1
+        if len(arr) == 1:
+            return "YES"
+        return "NO"
+        
+testcases = int(input())
+for _ in range(testcases):
+    print(handleEverything())
+    
