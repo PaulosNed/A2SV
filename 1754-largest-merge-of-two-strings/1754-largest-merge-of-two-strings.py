@@ -13,10 +13,8 @@ class Solution:
             else:
                 curr1 = word1[first]
                 curr2 = word2[second]
-                currFirst = first
-                currSecond = second
-                currFirst += 1
-                currSecond += 1
+                currFirst = first + 1
+                currSecond = second + 1
                 while(curr1 == curr2 and currFirst < len(word1) and currSecond < len(word2)):
                     curr1 += word1[currFirst]
                     curr2 += word2[currSecond]
