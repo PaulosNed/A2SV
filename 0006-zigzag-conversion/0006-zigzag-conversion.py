@@ -4,7 +4,6 @@ class Solution(object):
             return s
         L = [''] * numRows
         index, step = 0, 1
-
         for x in s:
             L[index] += x
             if index == 0:
@@ -12,5 +11,4 @@ class Solution(object):
             elif index == numRows -1:
                 step = -1
             index += step
-
         return ''.join(L)
