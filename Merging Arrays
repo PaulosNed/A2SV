@@ -1,0 +1,18 @@
+def checker():
+    len1, len2 = map(int, input().split(" "))
+    arr1 = list(map(int, input().split(" ")))
+    arr2 = list(map(int, input().split(" ")))
+    first = 0
+    second = 0
+    result = []
+    while(first < len1 and second < len2):
+        if arr1[first] <= arr2[second]:
+            result.append(arr1[first])
+            first += 1
+        else:
+            result.append(arr2[second])
+            second += 1
+    result.extend(arr1[first:])
+    result.extend(arr2[second:])
+    print(*result, sep = " ")
+checker()
