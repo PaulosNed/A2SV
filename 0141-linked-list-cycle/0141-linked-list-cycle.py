@@ -6,10 +6,14 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        allNodes = set()
-        while(head):
-            if head in allNodes:
+        fast = head
+        slow = head
+        first = True
+        while(fast and fast.next):
+            if not first and fast == slow:
                 return True
-            allNodes.add(head)
-            head = head.next
+            first = False
+            fast = fast.next.next
+            slow = slow.next
         return False
+            
