@@ -5,9 +5,8 @@
 #         self.next = next
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        fast = head
-        slow = head
-        while(fast and fast.next):
-            fast = fast.next.next
-            slow = slow.next
-        return slow
+        nodes = []
+        while(head):
+            nodes.append(head)
+            head = head.next
+        return nodes[len(nodes)//2]
