@@ -6,10 +6,10 @@
 
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        count = 0
+        allNodes = set()
         while(head):
-            if count == 10000:
+            if head in allNodes:
                 return True
-            count += 1
+            allNodes.add(head)
             head = head.next
         return False
