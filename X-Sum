@@ -1,0 +1,22 @@
+from collections import defaultdict
+total = int(input())
+for i in range(total):
+    n, m = map(int, input().split(" "))
+    matrix = []
+    for i in range(int(n)):
+        matrix.append(list(map(int, input().split(" "))))
+    diagonal = defaultdict(int)
+    reverse = defaultdict(int)
+    for i in range(n):
+        for j in range(m):
+            diagonal[i-j] +=  matrix[i][j]
+            reverse[i+j] += matrix[i][j]
+    if not diagonal:
+        print(0)
+        continue
+    maxSum = 0
+    for i in range(n):
+        for j in range(m):
+            currSum = diagonal[i-j] + reverse[i+j] - matrix[i][j]
+            maxSum = max(maxSum, currSum)
+    print(maxSum)
