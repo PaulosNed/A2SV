@@ -1,27 +1,25 @@
 class DataStream:
 
     def __init__(self, value: int, k: int):
-        self.stream = []
-        self.checker = defaultdict(int)
+        self.stream = deque()
+        self.count = 0
         self.value = value
         self.k = k
 
     def consec(self, num: int) -> bool:
         if len(self.stream) == self.k:
-            item = self.stream.pop(0)
-            self.checker[item] -= 1
-            if self.checker[item] == 0:
-                self.checker.pop(item)
+            popped = self.stream.popleft()
+            if self.count > 0 and popped == self.value:
+                self.count -= 1
         self.stream.append(num)
-        self.checker[num] += 1
-        if len(self.stream) < self.k:
-            return False 
-        if len(self.checker) == 1:
-            if self.value in self.checker:
-                return True
-            else:
-                return False
-
+        if num == self.value:
+            self.count += 1
+        else:
+            self.count = 0
+        if self.count == self.k:
+            return True
+        return False
+        
 
 # Your DataStream object will be instantiated and called as such:
 # obj = DataStream(value, k)
