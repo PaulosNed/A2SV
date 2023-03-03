@@ -5,21 +5,20 @@ class Solution:
             days = 0
             i = 0
             while i < len(weights):
-                sum_ = 0
-                while i < len(weights) and sum_ + weights[i] <= weight:
-                    sum_ += weights[i]
+                _sum = 0
+                while i < len(weights) and _sum + weights[i] <= weight:
+                    _sum += weights[i]
                     i += 1
                 days += 1
             return days
+                
+        left = max(weights)
+        right = sum(weights)
         
-        start = max(weights)
-        end = sum(weights)
-        while(start <= end):
-            mid = start + ((end - start)//2)
-            if countDays(mid) <= days:
-                end = mid - 1
+        while left <= right:
+            mid = left + (right - left)//2
+            if countDays(mid) > days:
+                left = mid + 1
             else:
-                start = mid + 1
-        return start
-    
-    
+                right = mid - 1
+        return left
