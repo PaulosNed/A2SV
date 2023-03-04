@@ -1,12 +1,12 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        ctr=0
-        sumx=0
-        tracker={0:1}
-        for i in nums:
-            sumx+=i
-            if sumx-k in tracker:
-                ctr+=tracker[sumx-k]
-            tracker[sumx]=tracker.get(sumx,0)+1
-        # print(tracker)
-        return ctr
+        prefixSum = defaultdict(int)
+        prefixSum[0] = 1
+        running_sum = 0
+        ans = 0
+        for num in nums:
+            running_sum += num
+            if running_sum - k in prefixSum:
+                ans += prefixSum[running_sum - k]
+            prefixSum[running_sum] += 1
+        return ans
