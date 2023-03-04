@@ -15,4 +15,5 @@ class Solution:
                     start += 1
                 if nums[end] != target:
                     end -= 1
+                    
         return [-1, -1]
