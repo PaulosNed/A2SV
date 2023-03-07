@@ -5,14 +5,11 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
-        return self.recursiveCount(root, 0)
-    
-    def recursiveCount(self, root, count):
+    def maxDepth(self, root: Optional[TreeNode], count = 0) -> int:
         if not root:
             return count
         
-        left = self.recursiveCount(root.left, count + 1)
-        right = self.recursiveCount(root.right, count + 1)
+        left = self.maxDepth(root.left, count + 1)
+        right = self.maxDepth(root.right, count + 1)
         
         return max(left, right)
