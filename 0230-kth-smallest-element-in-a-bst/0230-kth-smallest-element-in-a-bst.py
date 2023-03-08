@@ -6,16 +6,18 @@
 #         self.right = right
 class Solution:
     
-    def calc(self, root, stack):
+    def calc(self, root, stack, k):
         if not root:
             return stack
+        if len(stack) == k:
+            return stack
         
-        left = self.calc(root.left, stack)
+        left = self.calc(root.left, stack, k)
         stack.append(root.val)
-        right = self.calc(root.right, stack)
+        right = self.calc(root.right, stack, k)
             
         return stack
     
     def kthSmallest(self, root: Optional[TreeNode], k: int) -> int:
-        vals = self.calc(root, [])
+        vals = self.calc(root, [], k)
         return vals[k-1]
