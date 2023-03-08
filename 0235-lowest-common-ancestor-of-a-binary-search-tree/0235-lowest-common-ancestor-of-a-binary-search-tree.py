@@ -7,30 +7,16 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
-        final = None
+        test1 = p.val < root.val and q.val < root.val
+        test2 = p.val > root.val and q.val > root.val
         
-        def findAncestor(root):
-            nonlocal final
-            found = 0
-            if not root:
-                return found
+        if not(test1 or test2):
+            return root
         
-            if root.val == p.val or root.val == q.val:
-                found += 1
-                
-            left = findAncestor(root.left)
-            right = findAncestor(root.right)
-            
-            if left == right == 1:
-                found = 1
-                
-            found += max(left, right)
-            
-            if found == 2 and not final:
-                final = root
-            
-            return found
+        if root.val == p.val or root.val == q.val:
+            return root
         
-        findAncestor(root)
-        return final
-        
+        if test1:
+            return self.lowestCommonAncestor(root.left, p, q)
+        else:
+            return self.lowestCommonAncestor(root.right, p, q)
