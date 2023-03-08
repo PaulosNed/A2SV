@@ -9,10 +9,10 @@ class Solution:
     def calc(self, root, stack, k):
         if not root:
             return stack
-        if len(stack) == k:
-            return stack
         
         left = self.calc(root.left, stack, k)
+        if len(stack) == k:
+            return stack
         stack.append(root.val)
         right = self.calc(root.right, stack, k)
             
