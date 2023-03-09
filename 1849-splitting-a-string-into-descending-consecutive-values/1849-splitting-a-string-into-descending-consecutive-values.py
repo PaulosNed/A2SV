@@ -1,24 +1,22 @@
 class Solution:
     def splitString(self, s: str) -> bool:
-        n = len(s)
-        part_count = 0
+        selected = []
         
-        def recur( start , end , prev):
-            nonlocal part_count
-            if start == n and part_count > 1:
-                return True
+        def backtrack(idx):
             
-            if end == n:
-                return False
+            if idx >= len(s):
+                return len(selected) >= 2
             
-            res1 = False
-            if prev == None or prev - 1 == int(s[start:end+1]):
-                part_count += 1
-                res1 = recur    (end+1, end+1,int(s[start:end+1]) )
-                part_count -= 1
+            for i in range(idx, len(s)):
+                val = int(s[idx:i+1])
+                if not selected or selected[-1] - val == 1:
+                    selected.append(val)
+                    if backtrack(i+1):
+                        return True
+                    selected.pop()
+                
+        return backtrack(0)
             
-            res2 = recur(start, end+1 , prev)
-        
-            return res1 or res2
-        
-        return recur(0, 0, None)
+            
+                
+            
