@@ -7,8 +7,7 @@ class Solution:
                 return
             
             if len(subset) >= 2:
-                if subset not in final:
-                    final.append(subset[:])
+                final.append(subset[:])
             
             for i in range(idx, len(nums)):
                 if subset and nums[i] < subset[-1]:
@@ -18,4 +17,8 @@ class Solution:
                 subset.pop()
         
         backtrack([], 0)
-        return final
+        result = []
+        for item in final:
+            if item not in result:
+                result.append(item)
+        return result
