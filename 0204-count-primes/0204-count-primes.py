@@ -1,6 +1,6 @@
 class Solution:
     def countPrimes(self, n: int) -> int:
-        if n < 2:
+        if n <= 2:
             return 0
         
         is_prime = [1 for _ in range(n)]
