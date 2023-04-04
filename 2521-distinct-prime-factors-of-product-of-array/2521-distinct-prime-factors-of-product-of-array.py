@@ -16,6 +16,7 @@ class Solution:
                 self.set.add(d)
                 n = n // d
             d += 1
+            
         if n > 1:
             self.set.add(n)
 
