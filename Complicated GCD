@@ -1,0 +1,19 @@
+from collections import Counter
+import math
+
+def checker():
+    l, r = map(int, input().split())
+    
+    if l == r:
+        print(l)
+        return
+    
+    else:
+        print(1)
+        return
+checker()
+    
+# testcases = int(input())
+# for _ in range(testcases):
+#     checker()
+    
