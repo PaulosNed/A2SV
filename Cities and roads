@@ -1,0 +1,18 @@
+
+n = int(input())
+
+adj = []
+count = 0
+
+for i in range(n):
+    curr = list(map(int, input().split()))
+    adj.append(curr)
+
+for i in range(len(adj)):
+    for j in range(len(adj)):
+        if adj[i][j]:
+            count += 1
+            adj[i][j] = 0
+            adj[j][i] = 0
+
+print(count)
