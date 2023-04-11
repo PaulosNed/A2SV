@@ -1,0 +1,28 @@
+n = int(input())
+
+sources = [1] * n
+sinks = [1] * n
+
+adj = []
+
+for i in range(n):
+    curr = list(map(int, input().split()))
+    for j in range(len(curr)):
+        if curr[j]:
+            sources[j] = 0
+            sinks[i] = 0
+    adj.append(curr)
+
+final_so = []
+final_si = []
+
+for i in range(len(sources)):
+    if sources[i]:
+        final_so.append(i+1)
+
+for i in range(len(sinks)):
+    if sinks[i]:
+        final_si.append(i+1)
+
+print(len(final_so), *final_so)
+print(len(final_si), *final_si)
