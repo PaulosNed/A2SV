@@ -1,0 +1,14 @@
+from collections import defaultdict
+
+n = int(input())
+k = int(input())
+vertices = defaultdict(list)
+
+for _ in range(k):
+    curr = list(map(int, input().split()))
+    if curr[0] == 1:
+        vertices[curr[1]].append(curr[2])
+        vertices[curr[2]].append(curr[1])
+    else:
+        print(*vertices[curr[1]])
+        
