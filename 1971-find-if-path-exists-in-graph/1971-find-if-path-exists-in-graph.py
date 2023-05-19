@@ -15,10 +15,10 @@ class Solution:
             
             if rank[parent1] >= rank[parent2]:
                 parent[parent2] = parent1
-                parent[d] = parent1
+                # parent[d] = parent1
             else:
                 parent[parent1] = parent2
-                parent[s] = parent2
+                # parent[s] = parent2
         
         return find(source) == find(destination)
             
