@@ -19,9 +19,9 @@ class Solution:
             
             if rank[parent1] >= rank[parent2]:
                 parent[parent2] = parent1
-                parent[d-1] = parent1
+                rank[parent1] += rank[parent2]
             else:
                 parent[parent1] = parent2
-                parent[s-1] = parent2
+                rank[parent2] += rank[parent1]
         
         return ans
