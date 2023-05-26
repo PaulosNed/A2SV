@@ -12,7 +12,6 @@ class Solution(object):
         prev1 = self.fib(n-1, memo)
         prev2 = self.fib(n-2, memo)
         
-        ans = prev1 + prev2
-        memo[n] = ans
+        memo[n] = prev1 + prev2
         
-        return ans
+        return memo[n]
