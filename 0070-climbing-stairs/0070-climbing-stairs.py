@@ -6,14 +6,9 @@ class Solution:
         if n < 0:
             return 0
         
-        if n in memo:
-            return memo[n]
-        
-        way1 = self.climbStairs(n-1)
-        way2 = self.climbStairs(n-2)
-        
-        memo[n] = way1 + way2
-        
+        if n not in memo:
+            memo[n] = self.climbStairs(n-1) + self.climbStairs(n-2)
+
         return memo[n]
         
         
