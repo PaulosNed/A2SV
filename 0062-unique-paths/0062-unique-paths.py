@@ -6,13 +6,11 @@ class Solution:
             if curr == (m-1, n-1):
                 return 1
             
-            if curr in memo:
-                return memo[curr]
-            
-            for direction in directions:
-                nxt = (curr[0] + direction[0], curr[1] + direction[1])
-                if isBounded(nxt):
-                    memo[curr] += dp(nxt, memo)
+            if curr not in memo:
+                for direction in directions:
+                    nxt = (curr[0] + direction[0], curr[1] + direction[1])
+                    if isBounded(nxt):
+                        memo[curr] += dp(nxt, memo)
             
             return memo[curr]
         
