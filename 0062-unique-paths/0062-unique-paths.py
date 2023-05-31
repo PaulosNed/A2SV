@@ -1,22 +1,19 @@
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
-        directions = [(1, 0), (0, 1)]
         
-        def dp(curr, memo):
-            if curr == (m-1, n-1):
-                return 1
+        def isBounded(r, c):
+            if 0 <= r < m and 0 <= c < n:
+                return dp[r][c]
+            return 0
             
-            if curr not in memo:
-                for direction in directions:
-                    nxt = (curr[0] + direction[0], curr[1] + direction[1])
-                    if isBounded(nxt):
-                        memo[curr] += dp(nxt, memo)
-            
-            return memo[curr]
+        dp = [[0 for _ in range(n)] for _ in range(m)]
         
-        def isBounded(curr):
-            return 0 <= curr[0] < m and 0 <= curr[1] < n
+        dp[-1][-1] = 1
         
-        memo = defaultdict(int)
-        return dp((0,0), memo)
-            
+        for i in range(m-1, -1, -1):
+            for j in range(n-1, -1, -1):
+                dp[i][j] += isBounded(i + 1, j)
+                dp[i][j] += isBounded(i, j + 1)
+        
+        return dp[0][0]
+                
