@@ -5,9 +5,8 @@ class Solution:
         dp[0] = 0
         
         for i in range(1, amount + 1):
-            if dp[i] == float('inf'):
-                for coin in coins:
-                    if i - coin >= 0:
-                        dp[i] = min(dp[i - coin] + 1, dp[i])
+            for coin in coins:
+                if i - coin >= 0:
+                    dp[i] = min(dp[i - coin] + 1, dp[i])
         
         return dp[-1] if dp[-1] != float('inf') else -1
