@@ -1,0 +1,62 @@
+from collections import *
+import math
+from heapq import *
+
+def checker():
+    n = int(input())
+    arr = list(map(int, input().split()))
+    sortedArr, swaps = mergeSort(0, n - 1, arr)
+    
+    print(swaps)
+    
+def mergeSort(left, right, arr):
+    if left == right:
+        return [arr[left]], 0
+        
+    mid = left + (right - left) // 2
+    
+    left_half, swap1 = mergeSort(left, mid, arr)
+    right_half, swap2 = mergeSort(mid + 1, right, arr)
+    
+    ans, swap3 = merge(left_half, len(left_half), right_half, len(right_half))
+    
+    if swap1 != -1 and swap2 != -1 and swap3 != -1:
+        return ans, swap1 + swap2 + swap3
+            
+    return ans, -1
+            
+
+def merge(nums1, m, nums2, n):
+    first = 0
+    second = 0
+    ans = []
+    
+    swap = 0
+    if nums2[0] < nums1[0]:
+        swap = 1
+    
+    while(first < m and second < n):
+        if nums1[first] < nums2[second]:
+            if swap == 1:
+                swap = -1
+            ans.append(nums1[first])
+            first += 1
+        else:
+            if swap == 0:
+                swap = -1
+            ans.append(nums2[second])
+            second += 1
+    
+    ans.extend(nums2[second:])
+    ans.extend(nums1[first:])
+    
+    return ans, swap
+
+
+    
+# checker()
+    
+testcases = int(input())
+for _ in range(testcases):
+    checker()
+    
