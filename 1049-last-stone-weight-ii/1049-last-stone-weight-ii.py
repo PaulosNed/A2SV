@@ -1,6 +1,5 @@
 class Solution:
     def lastStoneWeightII(self, stones: List[int]) -> int:
-        stones.sort()
         
         @cache
         def dp(idx, cnt1, cnt2):
