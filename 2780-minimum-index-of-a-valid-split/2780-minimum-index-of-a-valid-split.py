@@ -13,7 +13,7 @@ class Solution:
             if nums[i] == dominant:
                 cnt += 1
                 
-                if cnt * 2 > i + 1 and (count[dominant] - cnt) * 2 > len(nums[i+1:]):
+                if cnt * 2 > i + 1 and (count[dominant] - cnt) * 2 > len(nums) - i - 1:
                     return i
         
         return -1
