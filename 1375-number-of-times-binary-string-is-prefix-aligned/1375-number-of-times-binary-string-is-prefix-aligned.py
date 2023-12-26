@@ -1,13 +1,14 @@
 class Solution:
     def numTimesAllBlue(self, flips: List[int]) -> int:
-        flipped = []
+        max_val = 0
+        idx_cnt = 0
         cnt = 0
         
-        for i in flips:
-            idx = i
-            heappush(flipped, -idx)
+        for val in flips:
+            max_val = max(max_val, val)
+            idx_cnt += 1
             
-            if len(flipped) == -flipped[0]:
+            if idx_cnt == max_val:
                 cnt += 1
         
         return cnt
