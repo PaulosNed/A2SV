@@ -3,7 +3,6 @@ class Solution:
         counter = Counter(arr)
         counts = list(counter.values())
         counts.sort()
-        print(counts)
         rem = len(counts)
         
         i = 0
